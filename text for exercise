@@ -1,0 +1,173 @@
+> json.file <- "http://api.wunderground.com/api/52fffe4386367f43/conditions/q/CA/San Francisco.json"             
+> json.data <- fromJSON(paste)
+Error: could not find function "fromJSON"
+> json.data <- fromJSON(paste(readLines(json.file), collapse=""))
+Error: could not find function "fromJSON"
+trying URL 'http://watson.nci.nih.gov/cran_mirror/src/contrib/rjson_0.2.14.tar.gz'
+Content type 'application/octet-stream' length 98397 bytes (96 Kb)
+opened URL
+==================================================
+downloaded 96 Kb
+
+* installing *source* package ‘rjson’ ...
+** package ‘rjson’ successfully unpacked and MD5 sums checked
+** libs
+clang++ -I/Library/Frameworks/R.framework/Resources/include -DNDEBUG  -I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include    -fPIC  -Wall -mtune=core2 -g -O2  -c dump.cpp -o dump.o
+clang -I/Library/Frameworks/R.framework/Resources/include -DNDEBUG  -I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include    -fPIC  -Wall -mtune=core2 -g -O2  -c parser.c -o parser.o
+parser.c:108:17: warning: comparison of constant 65536 with expression of type 'unsigned short' is always true [-Wtautological-constant-out-of-range-compare]
+        else if( input < 0x10000 )
+                 ~~~~~ ^ ~~~~~~~
+parser.c:115:1: warning: control may reach end of non-void function [-Wreturn-type]
+}
+^
+2 warnings generated.
+clang++ -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/usr/local/lib -o rjson.so dump.o parser.o -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
+installing to /Library/Frameworks/R.framework/Versions/3.1/Resources/library/rjson/libs
+** R
+** inst
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded
+* DONE (rjson)
+
+The downloaded source packages are in
+	‘/private/var/folders/t6/h3cvb7fn66q0ggqy09hglkgm0000gn/T/RtmpepT1gB/downloaded_packages’
+> json.file <- "http://api.wunderground.com/api/52fffe4386367f43/conditions/q/CA/San Francisco.json"
+> json.data <- fromJSON(paste(readLines(json.file), collapse=""))
+Error: could not find function "fromJSON"
+> library("rjson")
+> json.file <- "http://api.wunderground.com/api/52fffe4386367f43/conditions/q/CA/San Francisco.json"
+> json.data <- fromJSON(paste(readLines(json.file), collapse=""))
+Error in file(con, "r") : cannot open the connection
+In addition: Warning message:
+In file(con, "r") : cannot open: HTTP status was '400 Bad Request'
+> json.file <- "http://api.wunderground.com/api/52fffe4386367f43/conditions/q/VA/Richmond.json"
+> json.data <- fromJSON(paste(readLines(json.file), collapse=""))
+> str(json.data)
+List of 2
+ $ response           :List of 3
+  ..$ version       : chr "0.1"
+  ..$ termsofService: chr "http://www.wunderground.com/weather/api/d/terms.html"
+  ..$ features      :List of 1
+  .. ..$ conditions: num 1
+ $ current_observation:List of 56
+  ..$ image                  :List of 3
+  .. ..$ url  : chr "http://icons.wxug.com/graphics/wu2/logo_130x80.png"
+  .. ..$ title: chr "Weather Underground"
+  .. ..$ link : chr "http://www.wunderground.com"
+  ..$ display_location       :List of 12
+  .. ..$ full           : chr "Richmond, VA"
+  .. ..$ city           : chr "Richmond"
+  .. ..$ state          : chr "VA"
+  .. ..$ state_name     : chr "Virginia"
+  .. ..$ country        : chr "US"
+  .. ..$ country_iso3166: chr "US"
+  .. ..$ zip            : chr "23173"
+  .. ..$ magic          : chr "1"
+  .. ..$ wmo            : chr "99999"
+  .. ..$ latitude       : chr "37.57757950"
+  .. ..$ longitude      : chr "-77.53469849"
+  .. ..$ elevation      : chr "68.00000000"
+  ..$ observation_location   :List of 8
+  .. ..$ full           : chr "University Hts., Richmond, Virginia"
+  .. ..$ city           : chr "University Hts., Richmond"
+  .. ..$ state          : chr "Virginia"
+  .. ..$ country        : chr "US"
+  .. ..$ country_iso3166: chr "US"
+  .. ..$ latitude       : chr "37.588017"
+  .. ..$ longitude      : chr "-77.556076"
+  .. ..$ elevation      : chr "276 ft"
+  ..$ estimated              : list()
+  ..$ station_id             : chr "KVARICHM48"
+  ..$ observation_time       : chr "Last Updated on September 22, 9:19 PM EDT"
+  ..$ observation_time_rfc822: chr "Mon, 22 Sep 2014 21:19:18 -0400"
+  ..$ observation_epoch      : chr "1411435158"
+  ..$ local_time_rfc822      : chr "Mon, 22 Sep 2014 21:19:24 -0400"
+  ..$ local_epoch            : chr "1411435164"
+  ..$ local_tz_short         : chr "EDT"
+  ..$ local_tz_long          : chr "America/New_York"
+  ..$ local_tz_offset        : chr "-0400"
+  ..$ weather                : chr "Partly Cloudy"
+  ..$ temperature_string     : chr "65.0 F (18.3 C)"
+  ..$ temp_f                 : num 65
+  ..$ temp_c                 : num 18.3
+  ..$ relative_humidity      : chr "57%"
+  ..$ wind_string            : chr "Calm"
+  ..$ wind_dir               : chr "ENE"
+  ..$ wind_degrees           : num 68
+  ..$ wind_mph               : num 0.4
+  ..$ wind_gust_mph          : chr "1.1"
+  ..$ wind_kph               : num 0
+  ..$ wind_gust_kph          : chr "1.8"
+  ..$ pressure_mb            : chr "1021"
+  ..$ pressure_in            : chr "30.15"
+  ..$ pressure_trend         : chr "+"
+  ..$ dewpoint_string        : chr "49 F (10 C)"
+  ..$ dewpoint_f             : num 49
+  ..$ dewpoint_c             : num 10
+  ..$ heat_index_string      : chr "NA"
+  ..$ heat_index_f           : chr "NA"
+  ..$ heat_index_c           : chr "NA"
+  ..$ windchill_string       : chr "NA"
+  ..$ windchill_f            : chr "NA"
+  ..$ windchill_c            : chr "NA"
+  ..$ feelslike_string       : chr "65.0 F (18.3 C)"
+  ..$ feelslike_f            : chr "65.0"
+  ..$ feelslike_c            : chr "18.3"
+  ..$ visibility_mi          : chr "10.0"
+  ..$ visibility_km          : chr "16.1"
+  ..$ solarradiation         : chr "--"
+  ..$ UV                     : chr "0"
+  ..$ precip_1hr_string      : chr "0.00 in ( 0 mm)"
+  ..$ precip_1hr_in          : chr "0.00"
+  ..$ precip_1hr_metric      : chr " 0"
+  ..$ precip_today_string    : chr "0.00 in (0 mm)"
+  ..$ precip_today_in        : chr "0.00"
+  ..$ precip_today_metric    : chr "0"
+  ..$ icon                   : chr "partlycloudy"
+  ..$ icon_url               : chr "http://icons.wxug.com/i/c/k/nt_partlycloudy.gif"
+  ..$ forecast_url           : chr "http://www.wunderground.com/US/VA/Richmond.html"
+  ..$ history_url            : chr "http://www.wunderground.com/weatherstation/WXDailyHistory.asp?ID=KVARICHM48"
+  ..$ ob_url                 : chr "http://www.wunderground.com/cgi-bin/findweather/getForecast?query=37.588017,-77.556076"
+  ..$ nowcast                : chr ""
+> json.data$current_observation$display_location$latitude
+[1] "37.57757950"
+> is.numeric(json.data$current_observation$display_location$latitude)
+[1] FALSE
+> is.character(json.data$current_observation$display_location$latitude)
+[1] TRUE
+> json.data$current_observation$observation_time
+[1] "Last Updated on September 22, 9:19 PM EDT"
+> is.character(json.data$current_observation$observation_time)
+[1] TRUE
+> json.data$current_observation$temperature_string
+[1] "65.0 F (18.3 C)"
+> is.character(json.data$current_observation$temperature_string)
+[1] TRUE
+> json.data$current_observation$temp_f
+[1] 65
+> is.character(json.data$current_observation$temp_f)
+[1] FALSE
+> is.numeric(json.data$current_observation$temp_f)
+[1] TRUE
+> obs.location <-
++ 
++ obs.location <- rep(NA,length(json.data$current_observation$observation_location ))
+> for (n in 1:length(json.data$current_observation$observation_location ))
++ obs.location[n] <- json.data$current_observation$observation_location [[n]]
+> obs.location
+[1] "University Hts., Richmond, Virginia"
+[2] "University Hts., Richmond"          
+[3] "Virginia"                           
+[4] "US"                                 
+[5] "US"                                 
+[6] "37.588017"                          
+[7] "-77.556076"                         
+[8] "276 ft"                             
+> obs.location[7]
+[1] "-77.556076"
+> obs.location[8]
+[1] "276 ft"
